@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Assignment 3</title>
+        <link rel="shortcut icon" href="#">
+    </head>
+
+    <style>
+        body {
+            background-color: black;
+            color: white;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        input:checked + .slider {
+            background-color: #2196F3;
+        }
+
+        input:focus + .slider {
+            box-shadow: 0 0 1px #2196F3;
+        }
+
+        input:checked + .slider:before {
+            -webkit-transform: translateX(26px);
+            -ms-transform: translateX(26px);
+            transform: translateX(26px);
+        }
+
+        /* Rounded sliders */
+        .slider.round {
+        border-radius: 34px;
+        }
+
+        .slider.round:before {
+        border-radius: 50%;
+        }
+
+        .disable-btn {
+            opacity: 0.5;
+        }
+    </style>
+
+    <center>
+        <body onload="main()">
+            <div id="container">
+                <canvas id="webgl" width="1280" height="720">
+                    Please use a browser that supports "canvas"
+                </canvas>
+                
+                <p id="numdot"> ms: -- fps: -- </p>
+
+                Color Slider<br>
+                <input type = "color" id = "colorSlider" value = "#ffffff">
+                <br>
+
+                <!-- Rounded Switch -->
+                <br> Light Switch <br>
+                <label class="switch">
+                    <input id="toggle-lights"  class="toggle" type = "checkbox">
+                    <span class="slider round"></span>
+                </label>
+                <br>
+
+                <!-- Rounded Switch
+                <br> Specular Lighting Switch <br>
+                <label class="switch">
+                    <input id="toggle-specular"  class="toggle" type = "checkbox">
+                    <span class="slider round"></span>
+                </label>
+                <br> -->
+
+                <!-- Rounded Switch -->
+                <br> Normal Visualization Switch <br>
+                <label class="switch">
+                    <input id="toggle-normal"  class="toggle" type = "checkbox">
+                    <span class="slider round"></span>
+                </label>
+                <br>
+
+                <br> Spotlight Switch <br>
+                <label class="switch">
+                    <input id="toggle-spotlight"  class="toggle" type = "checkbox">
+                    <span class="slider round"></span>
+                </label>
+                <br>
+
+                <br> Light Rotation Switch <br>
+                <label class="switch">
+                    <input id="toggle-rotation"  class="toggle" type = "checkbox">
+                    <span class="slider round"></span>
+                </label>
+
+                <p style="margin-bottom: 0px; padding: 0px;" id="lightTextZ">Light X</p>
+                <input type="range" min="-33" max="33" value="0" id="lightSliderX" oninput="">
+                <button onclick="sliderReset('lightSliderX')">Reset</button>
+
+                <p style="margin-bottom: 0px; padding: 0px;" id="lightTextY">Light Y</p>
+                <input type="range" min="-33" max="33" value="17" id="lightSliderY" oninput="">
+                <button onclick="sliderReset('lightSliderY')">Reset</button>
+
+                <p style="margin-bottom: 0px; padding: 0px;" id="lightTextZ">Light Z</p>
+                <input type="range" min="-33" max="33" value="0" id="lightSliderZ" oninput="">
+                <button onclick="sliderReset('lightSliderZ')">Reset</button> <br><br>
+                    
+            </div>
+            <script src="./lib/webgl-utils.js"></script>
+            <script src="./lib/webgl-debug.js"></script>
+            <script src="./lib/cuon-utils.js"></script>
+            <script src="./lib/cuon-matrix.js"></script>
+            <script src="./src/WebGLSetup.js"></script>
+            <script src="./src/Cube.js"></script>
+            <script src="./src/maze.js"></script>
+            <script src="./src/reset.js"></script>
+            <script src="./src/Sphere.js"></script>
+            <script src="./src/Shaders.js"></script>
+            <script src="./src/Camera.js"></script>
+            <script src="./src/main.js"></script>
+
+        </body>
+        <p> Controls
+            <br> WASD to move farward, left, back and right
+            <br> Q to move up and E to move down
+            <br> click-drag to look up, down, left, right
+        </p>
+    </center>
+</html>
